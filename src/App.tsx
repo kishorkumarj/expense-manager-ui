@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Layout, Card } from 'antd';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-function App() {
+import SideComponent from './components/Layout/sidebar';
+import PageHeader from './components/Layout/header';
+
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
+
+const { Content } = Layout;
+
+interface AppInterface {
+  baseUrl: string
+}
+
+const App = ({ baseUrl }: AppInterface) => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter basename={baseUrl}>
+      <Layout style={{minHeight: '100vh'}}>
+        <SideComponent />
+        <Layout style={{marginLeft: '250px', marginRight: '1px'}}>
+          <PageHeader />
+          <Content className="conent-base-container">
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<Home />}/>
+            </Routes>
+          </Content>
+        </Layout>
+      </Layout>
+    </BrowserRouter>
+  )
 }
 
 export default App;

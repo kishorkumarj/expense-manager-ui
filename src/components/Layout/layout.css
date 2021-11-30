@@ -1,0 +1,30 @@
+.header-container{
+  background-color: #f7fafc;
+  padding: 0px 15px 0px 0px;
+  border-bottom: 1px solid #e9ecef
+}
+
+.portal-title-container{
+  height: 65px;
+  padding: 18px 15px;
+  display: flex;
+  flex-direction: row;
+  /*border-bottom: 1px solid #d5d8db; */
+}
+
+.sidebar-container{
+  overflow: auto;
+  height: 96%;
+  left: 0;
+  position: fixed;
+  padding-bottom: 20px;
+  box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+}
+
+.portal-title{
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 10px;
+  overflow: hidden;
+  color: #38a4f4;
+}
