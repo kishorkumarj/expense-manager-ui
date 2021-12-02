@@ -1,6 +1,6 @@
-.header-container{
+.header-component{
   background-color: #f7fafc;
-  padding: 0px 15px 0px 0px;
+  padding: 0px 20px 0px 10px;
   border-bottom: 1px solid #e9ecef
 }
 
@@ -9,7 +9,6 @@
   padding: 18px 15px;
   display: flex;
   flex-direction: row;
-  /*border-bottom: 1px solid #d5d8db; */
 }
 
 .sidebar-container{
@@ -27,4 +26,45 @@
   padding-left: 10px;
   overflow: hidden;
   color: #38a4f4;
+}
+
+.header-container{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.header-username {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 8px;
+  color: #249eed;
+  cursor: pointer;
+}
+
+.header-search-box{
+  max-width: 250px;
+  border: 0;
+  background-color: #f7fafc;
+  box-shadow: none !important;
+  font-size: 16px;
+  /*border-bottom: 1px solid #e9ecef; */
+}
+
+.header-search-box .ant-input{
+  background-color: #f7fafc;
+}
+
+.header-notifications{
+  padding-right: 20px;
+  padding-top: 2px;
+}
+
+.header-notification-icon{
+  font-size: 18px;
+  color: #fb6340;
+  cursor: pointer;
+}
+
+.user-menu-item{
+  padding: 8px 20px;
 }

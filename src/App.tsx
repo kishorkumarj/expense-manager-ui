@@ -9,6 +9,7 @@ import PageHeader from './components/Layout/header';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Portfolio from './pages/Portfolio';
 
 const { Content } = Layout;
 
@@ -29,6 +30,7 @@ const App = ({ baseUrl }: AppInterface) => {
               <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="*" element={<Home />}/>
             </Routes>
           </Content>

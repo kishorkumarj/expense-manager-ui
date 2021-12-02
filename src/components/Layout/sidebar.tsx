@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 
 import SideMenu from './menu'
@@ -6,10 +6,13 @@ import SideMenu from './menu'
 const { Sider } = Layout;
 
 const SideComponent = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <Sider
       collapsible
-      collapsed={false}
+      collapsed={collapsed}
+      onCollapse={() => setCollapsed(!collapsed)}
       theme="light"
       width={250}
       className="sidebar-container">

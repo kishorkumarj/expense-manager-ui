@@ -1,7 +1,8 @@
 import {
-  HomeOutlined,
-  BarChartOutlined,
-  UserOutlined
+  HomeFilled,
+  AreaChartOutlined,
+  UserOutlined,
+  AppstoreOutlined
 } from '@ant-design/icons'
 
 export interface MenuInterface {
@@ -16,19 +17,25 @@ const menuList = [
   {
     id: 'home',
     title: 'Home',
-    icon: <HomeOutlined />,
+    icon: <HomeFilled style={{color: '#5e72e4 '}}/>,
     url: '/home'
   },
   {
     id: 'dashboard',
     title: 'Dashboard',
-    icon: <BarChartOutlined />,
+    icon: <AreaChartOutlined style={{color: '#11cdef'}}/>,
     url: '/dashboard'
+  },
+  {
+    id: 'portfolio',
+    title: 'Portfolio',
+    icon: <AppstoreOutlined style={{color: '#fb6340'}}/>,
+    url: '/portfolio',
   },
   {
     id: 'profile',
     title: 'Profile',
-    icon: <UserOutlined />,
+    icon: <UserOutlined style={{color: '#2dce89'}}/>,
     url: '/profile',
   },
 ]
