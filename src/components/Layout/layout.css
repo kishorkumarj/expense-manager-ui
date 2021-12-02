@@ -11,6 +11,10 @@
   flex-direction: row;
 }
 
+.portal-title-container-collapsed{
+  padding: 18px 24px;
+}
+
 .sidebar-container{
   overflow: auto;
   height: 96%;
