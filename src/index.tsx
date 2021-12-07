@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import './index.css';
 import 'antd/dist/antd.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import config from './config';
+import store from './store/root';
 
 const application = (
-  <React.StrictMode>
-    <App
-      baseUrl={config.baseUrl}/>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App baseUrl={config.baseUrl}/>
+  </Provider>
 )
 
 ReactDOM.render(application, document.getElementById('root'));

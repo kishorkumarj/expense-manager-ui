@@ -4,7 +4,12 @@
   border-bottom: 1px solid #e9ecef
 }
 
+.display-none{
+  display: none;
+}
+
 .portal-title-container{
+  transition-duration: .3s;
   height: 65px;
   padding: 18px 15px;
   display: flex;
@@ -12,6 +17,7 @@
 }
 
 .portal-title-container-collapsed{
+  transition-duration: .3s;
   padding: 18px 24px;
 }
 
