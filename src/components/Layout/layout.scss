@@ -80,3 +80,60 @@ $header-bg: #f7fafc;
 .user-menu-item{
   padding: 8px 20px;
 }
+
+.mobile-menu{
+  display: none;   
+}
+
+.mobile-menu-drawer{
+  display: none;
+}
+
+@media only screen and (max-width: 450px) {
+  .header-component{
+    padding: 0px 5px 0px 5px;
+  }
+
+  .mobile-menu-drawer{
+    display: inline;
+
+    .ant-drawer-header{
+      padding: 0px;
+
+      .ant-drawer-header-title, .ant-drawer-title{
+        width: 100%;
+      }
+    }
+
+    .portal-title{
+      margin-top: 4px;
+    }
+  }
+
+  .mobile-menu-close-icon{
+    flex-grow: 1;
+    text-align: right;
+    cursor: pointer;
+    margin-top: 6px;
+    color: #8898aa;
+  }
+
+
+  .header-search-box{
+    display: none;
+  }
+
+  .mobile-menu{
+    display: inline;
+
+    .mobile-menu-icon {
+      font-size: 18px;
+      color: #8898aa;
+      cursor: pointer;
+    }
+  }
+
+  .header-username{
+    font-size: 12px;
+  }
+}
