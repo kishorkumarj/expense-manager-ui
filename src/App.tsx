@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout, Card } from 'antd';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import { connect } from 'react-redux';
 
 import SideComponent from './components/Layout/sidebar';

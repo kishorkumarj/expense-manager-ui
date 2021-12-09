@@ -1,5 +1,7 @@
+$header-bg: #f7fafc;
+
 .header-component{
-  background-color: #f7fafc;
+  background-color: $header-bg;
   padding: 0px 20px 0px 10px;
   border-bottom: 1px solid #e9ecef
 }
@@ -54,14 +56,14 @@
 .header-search-box{
   max-width: 250px;
   border: 0;
-  background-color: #f7fafc;
+  background-color: $header-bg;
   box-shadow: none !important;
   font-size: 16px;
   /*border-bottom: 1px solid #e9ecef; */
 }
 
 .header-search-box .ant-input{
-  background-color: #f7fafc;
+  background-color: $header-bg;
 }
 
 .header-notifications{

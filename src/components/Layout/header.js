@@ -8,8 +8,10 @@ import {
   SettingFilled,
   CalendarOutlined,
   LogoutOutlined
-} from '@ant-design/icons'
-import './layout.css';
+} from '@ant-design/icons';
+
+import profileImage from '../../assets/images/user_img.jpg'
+import './layout.scss';
 
 const { Header } = Layout;
 
@@ -50,7 +52,7 @@ const PageHeader = () => {
               
           </div>
           <div>
-            <Avatar src="https://lh3.googleusercontent.com/ogw/ADea4I6PTa-ohmQtG7WypVW1ve06IRYYlA3t_Opnwjfmcfs=s32-c-mo"/>
+            <Avatar src={profileImage}/>
           </div>
           <div className="header-notifications">
             <Badge dot={1} size="small">

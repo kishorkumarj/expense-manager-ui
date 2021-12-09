@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import './index.css';
 import 'antd/dist/antd.css'
+import './assets/css/main.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import config from './config';

@@ -8,9 +8,6 @@ export function* loginSaga() {
 }
 
 export function* logOutSaga(actions: any) {
-  console.log('reached logout saga...')
-  yield call(delay, 10000);
-  console.log('timeout just over')
   yield put({type: actionTypes.SET_LOGOUT})
 }
 

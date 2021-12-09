@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Card, Button } from 'antd';
 import * as actionTypes from '../../store/actionTypes';
 
+import {
+  HomeFilled,
+} from '@ant-design/icons'
+
 const Home = ({
   loggedIn,
   userLogin,
@@ -25,6 +29,8 @@ const Home = ({
     <Card>
       <h2>Home Page {loggedIn ? 'true': 'false'}</h2>
       <Button
+        className="btn-info-outlined"
+        icon={<HomeFilled />}
         onClick={() => buttonClick()}>Toggle</Button>
     </Card>
   )
