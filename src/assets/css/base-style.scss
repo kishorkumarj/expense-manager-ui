@@ -26,6 +26,19 @@ code {
   margin-right: 1px;
 }
 
+.align-center{
+  text-align: center;
+}
+
+.float-right{
+  float: right
+}
+
+.app-loader-css{
+  height: 100vh;
+  padding-top: 40vh;
+  text-align: center;
+}
 
 // for tab, width less than 820 px
 @media only screen and (max-width: 820px) {

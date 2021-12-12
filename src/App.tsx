@@ -1,46 +1,29 @@
-import React from 'react';
-import { Layout, Card } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import SideComponent from './components/Layout/sidebar';
-import PageHeader from './components/Layout/header';
-
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-import Portfolio from './pages/Portfolio';
-
-const { Content } = Layout;
+import Login from './pages/Login';
+import Main from './pages/Main';
+import { AppLoader } from './components/Loader';
 
 interface AppInterface {
   baseUrl: string,
-  collapsed: boolean
+  loading: boolean
 }
 
 const App = ({
   baseUrl,
-  collapsed
+  loading
 }: AppInterface) => {
+
+  if (loading){ return <AppLoader /> }
 
   return (
     <React.StrictMode>
       <BrowserRouter basename={baseUrl}>
-        <Layout style={{minHeight: '100vh'}}>
-          <SideComponent />
-          <Layout className={collapsed ? 'collapsed-layout' : 'expanded-layout'}>
-            <PageHeader />
-            <Content className="conent-base-container">
-              <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="*" element={<Home />}/>
-              </Routes>
-            </Content>
-          </Layout>
-        </Layout>
+        <Routes>
+          <Route path="/login" element={<Login />}/>
+          <Route path="*" element={<Main />} />
+        </Routes>
       </BrowserRouter>
     </React.StrictMode>
   )
@@ -48,7 +31,7 @@ const App = ({
 
 const mapStateToProps = (state: any) => {
   return {
-    collapsed: state.app.collapseMenu
+    loading: state.app.loading
   }
 }
 
