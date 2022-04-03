@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { MailOutlined, LockOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { loginInterface, LoginApi } from '../../utils/apis';
 
 const LoginForm = ({
   switchView,
-  doLogin,
-  loading
 }:{
   switchView: () => void,
-  doLogin: (formData: any) => void,
-  loading: boolean
 }) => {
 
+  const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
+
+  const performLogin = async (formData: loginInterface) => {
+
+    console.log(formData)
+    setLoading(true)
+    const res: any = await LoginApi(formData);
+    setLoading(false)
+  }
 
   return (
     <>
@@ -20,7 +26,7 @@ const LoginForm = ({
       <div className='login-form-container'>
         <Form
           form={form}
-          onFinish={doLogin}>
+          onFinish={performLogin}>
           <Form.Item
             name='username'
             rules={[{ required: true, message: 'Please input your email!' }]}>

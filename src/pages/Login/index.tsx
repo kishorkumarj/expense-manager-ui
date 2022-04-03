@@ -49,10 +49,7 @@ const Login = ({ loggedIn }: LoginInterface) => {
             doRegister={doRegister}
             loading={loading}/>
         : 
-          <LoginForm
-            switchView={displayRegister}
-            doLogin={doLogin}
-            loading={loading}/> 
+          <LoginForm switchView={displayRegister}/>
         }
       </Card>
     </div>
