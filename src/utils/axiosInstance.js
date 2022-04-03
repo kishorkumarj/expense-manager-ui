@@ -5,15 +5,20 @@ import * as constants from './constants';
 const API = axios.create({
   baseURL: siteConfig.default.apiURL,
   timeout: siteConfig.default.apiTimeout,
-  withCredentials: true
+  withCredentials: true,
+  headers:{
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+    withCredentials: true
+  }
 });
 
 
 API.interceptors.request.use(
   config => {
       const token = localStorage.getItem(constants.authToken);
-      if (token && config.url && config.url !== '/get-auth-tokens/') {
-          config.headers['Authorization'] = 'Token ' + token;
+      if (token && config.url && config.url !== '/obtain-token/') {
+          config.headers['Authorization'] = 'Bearer ' + token;
       }
       return config;
   },

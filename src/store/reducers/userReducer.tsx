@@ -2,6 +2,7 @@ import update from 'immutability-helper';
 import * as actionTypes from '../actionTypes';
 
 const initialState = {
+  userId: '',
   username: '',
   firstName: '',
   lastName: '',
@@ -16,11 +17,13 @@ const userReducer = (state = initialState, action: any) => {
     case actionTypes.SET_LOGIN:
       return update(state, {
         loggedIn: {$set: true},
+
       })
     
     case actionTypes.SET_LOGOUT:
       return update(state, {
         loggedIn: {$set: false},
+        userId: {$set: ''},
         username: {$set: ''},
         firstName: {$set: ''},
         lastName: {$set: ''},
@@ -31,6 +34,7 @@ const userReducer = (state = initialState, action: any) => {
     case actionTypes.SET_USER:
       return update(state, {
         username: {$set: action.username},
+        userId: {$set: action.userId},
         firstName: {$set: action.firstName},
         lastName: {$set: action.lastName},
         email: {$set: action.email},

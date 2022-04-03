@@ -8,15 +8,12 @@ export function* restoreUserSaga () {
   try{
     const token = localStorage.getItem(constants.authToken);
     if (token){
-      yield console.log('Restore user session.');
       yield put({type: actionTypes.SET_LOADING, loading: true});
       const res = yield call(getUserDetailsApi);
       
       if(res){
-        yield put({type: actionTypes.SET_LOGIN});      
-      }else{
-        localStorage.removeItem(constants.authToken);
-        yield put({type: actionTypes.SET_LOGOUT})      
+        yield put({type: actionTypes.SET_LOGIN});
+        yield put({type: actionTypes.SET_USER, ...res.data});
       }
     }
   }catch(err){
@@ -26,11 +23,14 @@ export function* restoreUserSaga () {
   yield put({type: actionTypes.SET_LOADING, loading: false});
 }
 
-export function* loginSaga() {
-
+export function* loginSaga(data) {
+  localStorage.setItem(constants.authToken, data.data.token)
+  yield put({type: actionTypes.SET_LOGIN});
+  yield put({type: actionTypes.SET_USER, ...data.data});
 }
 
-export function* logOutSaga(actions) {
+export function* logOutSaga() {
+  localStorage.removeItem(constants.authToken)
   yield put({type: actionTypes.SET_LOGOUT})
 }
 

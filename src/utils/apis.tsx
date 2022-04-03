@@ -6,19 +6,23 @@ export interface loginInterface {
   password: string
 }
 
+export interface registerInterface {
+  email: string,
+  firstName: string,
+  lastName: string,
+  password: string
+}
+
 export const getUserDetailsApi = async () => {
-  return {}
+  return await API.get('/user').catch(err => errorResponseHandler(err)) 
 }
 
 export const LoginApi = async (formData: loginInterface) => {
-  const res: any = await API.post('api/auth/obtain-token', formData).catch(err => errorResponseHandler(err))
-  console.log(res)
+  return await API.post('/auth/obtain-token', formData).catch(err => errorResponseHandler(err)) 
 }
 
-export const logoutApi = async () => {
+export const logoutApi = async () => {}
 
-}
-
-export const registerUserApi =  async (formData: any) => {
-
+export const registerUserApi =  async (formData: registerInterface) => {
+  return await API.post('/auth/register', formData).catch(err => errorResponseHandler(err))
 }

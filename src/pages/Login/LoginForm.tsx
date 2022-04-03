@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { MailOutlined, LockOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { loginInterface, LoginApi } from '../../utils/apis';
+import { useDispatch } from 'react-redux';
+import * as actionTypes from '../../store/actionTypes'
 
 const LoginForm = ({
   switchView,
@@ -11,12 +13,21 @@ const LoginForm = ({
 
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
-
+  const dispatch: any = useDispatch()
   const performLogin = async (formData: loginInterface) => {
 
-    console.log(formData)
     setLoading(true)
     const res: any = await LoginApi(formData);
+    console.log(res)
+    if (res.hasError){
+      message.error(`Failed to login. ${res.message}`)
+    }
+    else{
+      dispatch({
+        type: actionTypes.PERFORM_LOGIN,
+        data: res.data || {}
+      })
+    }
     setLoading(false)
   }
 
