@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import { MailOutlined, LockOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined, ArrowLeftOutlined, UserOutlined } from '@ant-design/icons';
 import { useForm } from 'antd/lib/form/Form';
 
 const RegisterForm = ({
@@ -25,11 +25,26 @@ const RegisterForm = ({
           onFinish={doRegister}>
 
           <Form.Item
-            name='username'
-            rules={[{ required: true, message: 'Please input your username!' }]}>
+            name='email'
+            rules={[{ required: true, message: 'Please input your email!' }]}>
             <Input
               placeholder='Email'
               prefix={<MailOutlined className="login-input-icon" />}/>
+          </Form.Item>
+
+          <Form.Item
+            name='firstName'
+            rules={[{ required: true, message: 'Please input your first name!' }]}>
+            <Input placeholder='First Name'
+              prefix={<UserOutlined className="login-input-icon" />}/>
+          </Form.Item>
+
+          <Form.Item
+            name='lastName'
+            rules={[{ required: true, message: 'Please input your Last name!' }]}>
+            <Input
+              placeholder='Last Name'
+              prefix={<UserOutlined className="login-input-icon" />}/>
           </Form.Item>
 
           <Form.Item

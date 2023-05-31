@@ -1,6 +1,6 @@
 const config = {
-  apiURL: '/',
-  apiTimeout: 20000,
+  apiURL: 'http://localhost:3000/api/v1',
+  apiTimeout: 2000,
   baseUrl: '/'
 }
 

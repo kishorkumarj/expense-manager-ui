@@ -22,7 +22,7 @@ $text-base-color: #8898aa;
 .login-container{
   border-radius: 5px;
   width: 350px;
-  height: 380px;
+  min-height: 380px;
   margin: 10px;
   display: flex;
   flex-direction: column;

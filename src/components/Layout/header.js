@@ -11,10 +11,13 @@ import {
   MenuOutlined,
   CloseOutlined
 } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux'
 
 import profileImage from '../../assets/images/user_img.jpg'
 import './layout.scss';
 import SideMenu from './menu';
+import * as actionTypes from '../../store/actionTypes';
+import { capitalizeFirst } from '../../utils/utils';
 
 const { Header } = Layout;
 
@@ -25,6 +28,19 @@ const PageHeader = () => {
   const onMobileMenuClose = () => {
     setMobileMenuVisible(false);
   }
+
+  const dispatch = useDispatch();
+  
+  const onLogout = () => {
+    dispatch({ type: actionTypes.PERFORM_LOGOUT });
+  }
+
+  const [ firstName, lastName ] = useSelector(state => {
+    return [
+      capitalizeFirst(state?.user?.firstName),
+      capitalizeFirst(state?.user?.lastName)
+    ]
+  })
 
   const menu = (
     <Menu>
@@ -42,6 +58,7 @@ const PageHeader = () => {
       <Menu.Divider />
       <Menu.Item key="3"
         className="user-menu-item"
+        onClick={onLogout}
         icon={<LogoutOutlined style={{paddingRight: '3px'}}/>}>Logout</Menu.Item>
     </Menu>
   );
@@ -53,7 +70,7 @@ const PageHeader = () => {
         width="30"
         alt="logo"
         height="30"/>
-        <div className="portal-title">React Client</div>
+        <div className="portal-title">Expense Manager</div>
         <CloseOutlined
           className="mobile-menu-close-icon"
           onClick={() => setMobileMenuVisible(false)}/>
@@ -69,7 +86,7 @@ const PageHeader = () => {
             overlay={menu}
             trigger="click">
             <div className="header-username" onClick={e => e.preventDefault()}>
-              Kishor Jagadeesan
+              {firstName} {lastName}
             </div>
           </Dropdown>
               

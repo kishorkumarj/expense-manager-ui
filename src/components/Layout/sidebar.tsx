@@ -29,7 +29,7 @@ const SideComponent = ({
           width="30"
           alt="logo"
           height="30"/>
-          <div className={collapsed ? 'display-none': "portal-title "} >React Client</div>
+          <div className={collapsed ? 'display-none': "portal-title "} >Expense Manager</div>
       </div>
       <SideMenu/>
     </Sider>
