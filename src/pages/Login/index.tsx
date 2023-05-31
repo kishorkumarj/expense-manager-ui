@@ -1,29 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { Card } from 'antd';
+import { useState } from 'react';
+import { Card, message } from 'antd';
 import { Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './login.scss';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import { registerUserApi } from '../../utils/apis';
+import * as actionTypes from '../../store/actionTypes';
 
-interface LoginInterface {
-  loggedIn: boolean
-}
-
-const Login = ({ loggedIn }: LoginInterface) => {
+const Login = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const loggedIn:boolean = useSelector((state: any) => state.user.loggedIn)
+  const dispatch = useDispatch();
 
   const displayRegister = () => setShowRegister(true);
   const displayLogin = () => setShowRegister(false);
 
-  const doLogin = async (formData: any) => {
-    setLoading(true)
-    console.log('login data::: ', formData)
-  }
-
   const doRegister = async (formData: any) => {
-    console.log('register user:: ', formData);
+    setLoading(true);
+    formData.password = formData.confirmpassword
+    delete formData.confirmpassword
+    const res: any = await registerUserApi(formData);
+    if(res.hasError){
+      message.error(`Failed to create account. ${res.message}`)
+    }else{
+      //TODO: set data to state.
+      dispatch({
+        type: actionTypes.PERFORM_LOGIN,
+        data: res.data || {}
+      })
+    }
+    setLoading(false);
   }
 
   if(loggedIn){
@@ -56,10 +65,4 @@ const Login = ({ loggedIn }: LoginInterface) => {
   )
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    loggedIn: state.user.loggedIn
-  }
-}
-
-export default connect(mapStateToProps)(Login);
+export default Login;

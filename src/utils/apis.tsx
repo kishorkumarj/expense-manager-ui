@@ -6,19 +6,49 @@ export interface loginInterface {
   password: string
 }
 
+export interface registerInterface {
+  email: string,
+  firstName: string,
+  lastName: string,
+  password: string
+}
+
+interface TransactionQueryInterface {
+  account_id?: string,
+  category?: string,
+  transaction_type?: string,
+  start_date?: Date,
+  end_date?: Date,
+  date?: Date,
+}
+
 export const getUserDetailsApi = async () => {
-  return {}
+  return await API.get('/user').catch(err => errorResponseHandler(err)) 
 }
 
 export const LoginApi = async (formData: loginInterface) => {
-  const res: any = await API.post('api/auth/obtain-token', formData).catch(err => errorResponseHandler(err))
-  console.log(res)
+  return await API.post('/auth/obtain-token', formData)
+    .catch(err => errorResponseHandler(err)) 
 }
 
-export const logoutApi = async () => {
+export const logoutApi = async () => {}
 
+export const registerUserApi =  async (formData: registerInterface) => {
+  return await API.post('/auth/register', formData)
+    .catch(err => errorResponseHandler(err))
 }
 
-export const registerUserApi =  async (formData: any) => {
+export const getTransactionsAPI = async (query: TransactionQueryInterface = {}) => {
+  const params = {...query}
+  return await API.get('/user/transaction', {params: params})
+    .catch(err => errorResponseHandler(err))
+}
 
+export const getAccountsAPI = async (type:string='') => {
+  const params:any = {};
+  if (type){
+    params.type=type;
+  }
+  return await API.get('/user/account', {params: params})
+    .catch(err => errorResponseHandler(err))
 }

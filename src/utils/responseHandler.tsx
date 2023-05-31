@@ -1,5 +1,4 @@
 export const errorResponseHandler = (res: any) => {
-  console.log(res)
   const response = {
     status: 500,
     hasError: true,
@@ -9,6 +8,8 @@ export const errorResponseHandler = (res: any) => {
 
   try{
     response.status = res?.response?.status || 500;
+    response.message = res?.response?.data?.message || '';
+    response.data = res?.response?.data || {};
 
   }catch(err){}
 
